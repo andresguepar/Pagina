@@ -47,17 +47,26 @@ window.onscroll = () =>{
 
 //Products
 
+const cards = document.getElementById('cards');
 const items = document.getElementById('items');
+const footer = document.getElementById('footer');
 const templateCard = document.getElementById('template-card').content;
+const templateFooter = document.getElementById('template-footer').content;
+const templateCart = document.getElementById('template-cart').content;
 const fragment = document.createDocumentFragment();
 let cart = {};
 
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', e => { 
     fetchData();
-})
-items.addEventListener('click', e => {
+
+});
+cards.addEventListener('click', e => {
     addCart(e);
 
+});
+
+items.addEventListener('click', e => {
+    btnAction(e);
 });
 
 const fetchData = async () => {
@@ -80,7 +89,7 @@ const paint = data => {
         const clone = templateCard.cloneNode(true);
         fragment.appendChild(clone);
     });
-    items.appendChild(fragment);
+    cards.appendChild(fragment);
 }
 
 const addCart = e => {
@@ -93,12 +102,12 @@ const addCart = e => {
     e.stopPropagation();
 }
 
-const setCart = object => {
-    //console.log(object);
+const setCart = Object => {
+    //console.log(Object);
     const product = {
-        id: object.querySelector('.btn').dataset.id,
-        title: object.querySelector('h3').textContent,
-        price: object.querySelector('p').textContent,
+        id: Object.querySelector('.btn').dataset.id,
+        title: Object.querySelector('h3').textContent,
+        price: Object.querySelector('p').textContent,
         cant: 1
     }
 
@@ -107,8 +116,68 @@ const setCart = object => {
     }
 
     cart[product.id] = {...product}
+    paintCart();
 
-    console.log(cart);
+
+}
+
+const paintCart = () => {
+    //console.log(cart);
+    items.innerHTML='';
+    Object.values(cart).forEach(product => {
+        templateCart.querySelector('th').textContent = product.id
+        templateCart.querySelectorAll('td')[0].textContent = product.title
+        templateCart.querySelectorAll('td')[1].textContent = product.cant
+        templateCart.querySelector('span').textContent = product.cant*product.price
+
+        templateCart.querySelector('.btn-info').dataset.id = product.id
+        templateCart.querySelector('.btn-danger').dataset.id = product.id
+        
+
+        const clone = templateCart.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+
+    items.appendChild(fragment);
+
+    paintFooter();
+}
+
+const paintFooter = () => {
+    footer.innerHTML =''
+
+    if(Object.keys(cart).length === 0){
+        footer.innerHTML = 
+        `<th scope="row" colspan="5">cart empty!</th> 
+        `
+        return
+    }
+
+    const nCant = Object.values(cart).reduce((acc, {cant}) => acc + cant,0);
+    const nPrice = Object.values(cart).reduce((acc,{cant,price}) => acc + cant * price,0);
+
+    templateFooter.querySelectorAll('td')[0].textContent = nCant;
+    templateFooter.querySelector('span').textContent = nPrice;
+
+    const clone = templateFooter.cloneNode(true);
+    fragment.appendChild(clone);
+    footer.appendChild(fragment);
+
+    const btnDelete = document.getElementById('delete-cart');
+    btnDelete.addEventListener('click',() => {
+        cart = {};
+        paintCart();
+    });
+}
+
+const btnAction = e => {
+    
+    if(e.target.classList.contains('bts-info')){
+        const product = cart[e.target.dataset.id]
+        product.cant = cart[e.target.dataset.id].cant + 1
+        cart[e.target.dataset.id] = {...product}
+        paintCart();
+    }
 
 }
 /*var swiper = new Swiper(".product-slider", {

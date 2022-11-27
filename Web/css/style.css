@@ -15,7 +15,7 @@
     margin:0; padding: 0 ;
     box-sizing:border-box;
     outline:none; border:none;
-    text-decoration: none;
+    text-decoration: none ;
     text-transform: capitalize;
     transition: all .2s linear;
 }
@@ -37,14 +37,15 @@ section{
 }
 
 .btn{
-    margin: 1rem;
+    margin-top: 1rem;
     display: inline-block ;
-    padding: 0.8rem 3rem ;
+    padding: .8rem 3rem ;
     font-size: 1.7rem;
     border-radius: .5rem;
     border: .2rem solid --light-color ;
     color: var(--black);
     cursor: pointer;
+    background: none;
 }
 
 .btn:hover{
@@ -52,6 +53,8 @@ section{
     color: #fff;
 
 }
+
+a{text-decoration: none;}
 
 .heading{
     text-align: center;
@@ -85,21 +88,18 @@ section{
     font-size: 2.5rem;
     font-weight: bolder;
     color:var(--black)
+    
 }
 
 .header .logo i{
     color: var(--black);
-}
-
-.header .logo a{
-    text-transform: none;
+  
 }
 
 .header .navbar a{
     font-size: 1.7rem;
     margin:0 1rem;
     color:var(--black);
-    text-decoration: none;
 
 }
 
@@ -294,7 +294,7 @@ header .search-form input{
     background: url(https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=878&q=80) no-repeat;
     background-position: center;
     background-size: cover;
-    padding-top: 17rem;
+    padding-top: 20rem;
     padding-bottom: 10rem;
 }
 
@@ -368,7 +368,7 @@ header .search-form input{
     padding: .5rem 0;
 }*/
 .products .row{
-    padding: 2.5rem;
+    padding: 2rem;
     
 }
 
@@ -386,6 +386,7 @@ header .search-form input{
     outline: var(--outline);
     box-shadow: var(--box-shadow);
     transition: .2s linear;
+    object-fit: contain;
 }
 
 .products .card:hover{
@@ -395,7 +396,7 @@ header .search-form input{
 
 .products .card h3{
     margin: 1rem;
-    padding: 2 rem;
+    padding: 1 rem;
     font-size: 2.5rem;
     color: var(--black);
 }
@@ -403,17 +404,19 @@ header .search-form input{
 .products .card p{
     font-size: 2rem;
     color: var(--black);
-    padding: .5rem 0;
+    padding:  0;
 }
 
 .products .card img{
-    height: 20rem;
+    width: 80%;
+   padding: .2rem; 
+   margin: 2rem;
+  
 }
 
 .products .card .btn{
-   
+    margin: 1rem;
     display: inline-block ;
-    
     font-size: 1.7rem;
     border-radius: .5rem;
     border: .2rem solid --light-color ;
