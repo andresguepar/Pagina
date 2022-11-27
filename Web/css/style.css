@@ -91,10 +91,15 @@ section{
     color: var(--black);
 }
 
+.header .logo a{
+    text-transform: none;
+}
+
 .header .navbar a{
     font-size: 1.7rem;
     margin:0 1rem;
     color:var(--black);
+    text-decoration: none;
 
 }
 

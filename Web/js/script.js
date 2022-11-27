@@ -45,6 +45,40 @@ window.onscroll = () =>{
 }
 
 
+//DOM
+
+const items = document.getElementById('items');
+const templateCard = document.getElementById('template-card').content;
+const fragment = document.createDocumentFragment();
+
+document.addEventListener('DOMContentLoaded', () =>{
+    fetchData();
+})
+
+const fetchData = async () => {
+    try {
+        const res = await fetch('/json/api.json');
+        const data = await res.json();
+        //console.log(data);
+        paint(data);
+    }catch(error) {
+        console.log(error);
+    }
+}
+
+const paint = data => {
+    data.forEach(product =>{
+        templateCard.querySelector('h3').textContent= product.title;
+
+        const clone = templateCard.cloneNode(true);
+        fragment.appendChild(clone);
+
+    });
+
+    items.appendChild
+
+}
+
 /*var swiper = new Swiper(".product-slider", {
     loop:true,
     spaceBetween: 20,
