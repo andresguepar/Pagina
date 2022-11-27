@@ -45,15 +45,20 @@ window.onscroll = () =>{
 }
 
 
-//DOM
+//Products
 
 const items = document.getElementById('items');
 const templateCard = document.getElementById('template-card').content;
 const fragment = document.createDocumentFragment();
+let cart = {};
 
 document.addEventListener('DOMContentLoaded', () =>{
     fetchData();
 })
+items.addEventListener('click', e => {
+    addCart(e);
+
+});
 
 const fetchData = async () => {
     try {
@@ -68,17 +73,44 @@ const fetchData = async () => {
 
 const paint = data => {
     data.forEach(product =>{
-        templateCard.querySelector('h3').textContent= product.title;
-
+        templateCard.querySelector('h3').textContent = product.title;
+        templateCard.querySelector('p').textContent = product.price;
+        templateCard.querySelector('img').setAttribute("src",product.thumbnailUrl);
+        templateCard.querySelector('.btn').dataset.id = product.id;
         const clone = templateCard.cloneNode(true);
         fragment.appendChild(clone);
-
     });
-
-    items.appendChild
-
+    items.appendChild(fragment);
 }
 
+const addCart = e => {
+    //console.log(e.target);
+    //console.log(e.target.classList.contains('btn'))
+    if(e.target.classList.contains('btn')){
+         setCart(e.target.parentElement);
+
+    }
+    e.stopPropagation();
+}
+
+const setCart = object => {
+    //console.log(object);
+    const product = {
+        id: object.querySelector('.btn').dataset.id,
+        title: object.querySelector('h3').textContent,
+        price: object.querySelector('p').textContent,
+        cant: 1
+    }
+
+    if(cart.hasOwnProperty(product.id)) {
+        product.cant = cart[product.id].cant + 1;
+    }
+
+    cart[product.id] = {...product}
+
+    console.log(cart);
+
+}
 /*var swiper = new Swiper(".product-slider", {
     loop:true,
     spaceBetween: 20,

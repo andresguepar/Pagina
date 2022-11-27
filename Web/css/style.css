@@ -323,8 +323,8 @@ header .search-form input{
     line-height: 1.8rem;
 }
 
-.products .product-section{
-    padding: 1rem;
+/*.products .product-section{
+    padding: 2.5rem;
 }
 
 .products .product-section:first-child{
@@ -362,14 +362,64 @@ header .search-form input{
     padding: .5rem 0;
 }
 
-.products .product-section .box .stars i{
+/*.products .product-section .box .stars i{
     font-size: 2.5rem;
     color: var(--blue);
     padding: .5rem 0;
+}*/
+.products .row{
+    padding: 2.5rem;
+    
 }
 
+.products .row:first-child{
+    margin-bottom: 2rem;
+}
 
+.products .card{
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: .5rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    outline-offset: -1rem;
+    outline: var(--outline);
+    box-shadow: var(--box-shadow);
+    transition: .2s linear;
+}
 
+.products .card:hover{
+    outline-offset: 0rem;
+    outline: var(--outline-hover);
+}
+
+.products .card h3{
+    margin: 1rem;
+    padding: 2 rem;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.products .card p{
+    font-size: 2rem;
+    color: var(--black);
+    padding: .5rem 0;
+}
+
+.products .card img{
+    height: 20rem;
+}
+
+.products .card .btn{
+   
+    display: inline-block ;
+    
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border: .2rem solid --light-color ;
+    outline-offset: 0rem;
+    outline: var(--outline-hover);
+}
 
 
 
