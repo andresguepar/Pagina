@@ -11,7 +11,6 @@
 }
 
 *{
-    font-family:'Noto Sans', sans-serif ;
     margin:0; padding: 0 ;
     box-sizing:border-box;
     outline:none; border:none;
@@ -176,7 +175,7 @@ header .search-form input{
     padding:1rem;
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
-    width:35rem;
+    width:40rem;
     background: #fff;
 }
 
@@ -423,6 +422,15 @@ header .search-form input{
     outline-offset: 0rem;
     outline: var(--outline-hover);
 }
+
+.shopping-cart {
+    font-size: 1.5rem;
+}
+
+.shopping-cart .template-cart button{
+    font-size: 2rem;
+}
+
 
 
 

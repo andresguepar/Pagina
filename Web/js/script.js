@@ -58,6 +58,10 @@ let cart = {};
 
 document.addEventListener('DOMContentLoaded', e => { 
     fetchData();
+    if(localStorage.getItem('cart')){
+        cart=JSON.parse(localStorage.getItem('cart'));
+        paintCart();
+    }
 
 });
 cards.addEventListener('click', e => {
@@ -141,6 +145,10 @@ const paintCart = () => {
     items.appendChild(fragment);
 
     paintFooter();
+
+    localStorage.setItem('cart',JSON.stringify(cart));
+
+
 }
 
 const paintFooter = () => {
@@ -172,13 +180,22 @@ const paintFooter = () => {
 
 const btnAction = e => {
     
-    if(e.target.classList.contains('bts-info')){
+    if(e.target.classList.contains('btn-info')){
         const product = cart[e.target.dataset.id]
         product.cant = cart[e.target.dataset.id].cant + 1
         cart[e.target.dataset.id] = {...product}
         paintCart();
     }
 
+    if(e.target.classList.contains('btn-danger')){
+        const product = cart[e.target.dataset.id]
+        product.cant--
+        if(product.cant === 0) {
+            delete cart[e.target.dataset.id]
+        }
+        paintCart();
+    }
+    e.stopPropagation();
 }
 /*var swiper = new Swiper(".product-slider", {
     loop:true,

@@ -41,7 +41,7 @@
     </div>
 
     <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
+        <input type="search" id="search-box" placeholder="Search Here...">
         <label for="search-box" class="fas fa-search"></label>
     </form>
 
@@ -66,9 +66,9 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Item</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Acción</th>
-                  <th scope="col">Total</th>
+                  <th scope="col">Cant.</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody id="items"></tbody>
@@ -78,15 +78,15 @@
                 </tr>
               </tfoot>
             </table>
-            <h4>Cards</h4>
             <div class="row" id="items"></div>
           </div>
+          <a href="#" class="btn">checkout</a>
 
 
         </div>
 
         <template id="template-footer">
-            <th scope="row" colspan="2">Total productos</th>
+            <th scope="row" colspan="2">Total </th>
             <td>10</td>
             <td>
                 <button class=" btn-danger btn-sm " id="delete-cart">
@@ -102,16 +102,18 @@
             <td>Café</td>
             <td>1</td>
             <td>
-                <button class="btn btn-info btn-sm">
+                <button class=" btn-info " >
                     +
                 </button>
-                <button class="btn btn-danger btn-sm">
-                    -
+                /
+                <button class=" btn-danger" >
+                   -
                 </button>
             </td>
             <td>$ <span>500</span></td>
           </tr>
         </template>
+
     
     </div>
 
@@ -162,7 +164,7 @@
                 <img src="" alt="" class="card-img-top"
                 <div class="card-body">
                     <h3>name</h3>
-                    <p> price</p>
+                    <p>price </p>
                      <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
