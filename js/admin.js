@@ -1,20 +1,22 @@
-const formEl = document.querySelector('.admin-form')
+let formEl = document.querySelector('.admin-form');
 
-formEl.addEventListener('submit', event => {
+formEl.addEventListener('submit', function(event) {
     event.preventDefault();
     
     const formData = new FormData(formEl);
     const data = Object.fromEntries(formData);
 
-    fetch('https://reqres.in/api/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(data)
-    }).then(res => res.json())
-      .then(data => console.log(data))
-      .catch(error => {
-        console.log("Error");
-      });
+    const saveData = (i) =>{
+        const finished = (error) =>{
+            if(error){
+                console.error(error)
+                return;
+            }
+        }
+        const jsonData = JSON.stringify(i)
+        console.log(jsonData)
+
+    }
+
+    saveData(data);
 })
