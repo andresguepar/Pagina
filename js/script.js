@@ -77,7 +77,6 @@ const fetchData = async () => {
     try {
         const res = await fetch('/json/api.json');
         const data = await res.json();
-        //console.log(data);
         paint(data);
     }catch(error) {
         console.log(error);
